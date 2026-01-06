@@ -1,8 +1,4 @@
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <string>
-#include <array>
-#include <iomanip>
 
 std::string truncate(const std::string &string)
 {
