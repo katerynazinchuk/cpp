@@ -13,6 +13,6 @@ class HumanA
     public:
         HumanA(std::string name, Weapon& weapon);
         void attack(void) const;
-}
+};
 
 #endif

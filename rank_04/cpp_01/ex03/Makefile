@@ -3,7 +3,7 @@ CXXFLAGS := -std=c++11 -Wall -Wextra -Werror
 
 NAME := weapon
 BUILD_DIR := build
-SRCS := main.cpp Weapon.cpp
+SRCS := main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS := $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
 
 RM := rm -rf
