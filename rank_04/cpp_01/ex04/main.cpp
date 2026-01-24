@@ -9,27 +9,41 @@ int main (int argc, char **argv)
         std::string filename = argv[1];
         std::string s1 = argv[2];
         std::string s2 = argv[3];
-        std::ifstream in(filename);
-        if(!in)
+		if(s1.empty())
+		{
+			std::cout << "empty string" << std::endl;
+			return (1);
+		}
+		std::ifstream in(filename);
+		if(!in)
         {
             std::cout << "can't open a file" << std::endl;
             return (1);
         }
+		std::ofstream out(filename + ".replace");
+		if(!out)
+		{
+			std::cout << "can't create output file" << std::endl;
+			return 1;
+		}
         std::string line;
         while(std::getline(in, line))
         {
-            int pos = 0;
-            std::cout << line << std::endl;
-            int new_pos = line.find(s1, pos);
-            pos = new_pos + s1.length();
-        }
-        
+			std::string result;
+            std::size_t pos = 0;
+			std::size_t new_pos = line.find(s1, pos);
+			
+			while(new_pos != std::string::npos)
+			{
+				result.append(line, pos, new_pos - pos);
+				result.append(s2);
 
-        // for(int i = 0; i < argc; i++)
-        // {
-        //     std::string arg = argv[i];
-        //     std::cout << arg << std::endl;
-        // }
+            	pos = new_pos + s1.length();
+				new_pos = line.find(s1, pos);
+			}
+			result.append(line, pos, std::string::npos);
+			out << result << std::endl;
+        }
     }
     else
         std::cout << "Wrong input" << std::endl;
