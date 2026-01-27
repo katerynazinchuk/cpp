@@ -3,7 +3,7 @@ CXXFLAGS := -std=c++11 -Wall -Wextra -Werror -Iinclude
 
 TARGET := phonebook
 BUILD_DIR := build
-SRCS := PhoneBook.cpp
+SRCS := PhoneBook.cpp main.cpp Contact.cpp
 OBJS := $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
 
 RM := rm -rf
