@@ -6,14 +6,18 @@
 static int tests_passed = 0;
 static int tests_failed = 0;
 
-void check(bool condition, const std::string& test_name) {
-  if (condition) {
-    std::cout << "✅ PASS: " << test_name << std::endl;
-    tests_passed++;
-  } else {
-    std::cout << "❌ FAIL: " << test_name << std::endl;
-    tests_failed++;
-  }
+void check(bool condition, const std::string& test_name)
+{
+	if (condition)
+	{
+		std::cout << "✅ PASS: " << test_name << std::endl;
+		tests_passed++;
+	}
+	else
+	{
+		std::cout << "❌ FAIL: " << test_name << std::endl;
+		tests_failed++;
+	}
 }
 
 void print_results() {

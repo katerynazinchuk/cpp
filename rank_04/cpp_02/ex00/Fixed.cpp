@@ -4,27 +4,27 @@ const int Fixed::_bits = 8;
 
 Fixed::Fixed() : _value(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other) : _value(other._value)
 {
-    std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
-    if(this != &other)
-    {
-        _value = other._value;
-    }
-    return *this;//return object not pointer
+	std::cout << "Copy assignment operator called" << std::endl;
+	if(this != &other)
+	{
+		_value = other._value;
+	}
+	return *this;//return object not pointer
 }
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits(void) const

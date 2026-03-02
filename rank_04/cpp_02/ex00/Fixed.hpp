@@ -5,18 +5,18 @@
 
 class Fixed
 {
-    private:
-        int _value;
-        static const int _bits;//same across all fixed objects
+	private:
+		int _value;
+		static const int _bits;//same across all fixed objects
 
-    public:
-    Fixed();
-    Fixed(const Fixed& other);//copy constructor
-    Fixed& operator=(const Fixed& other);//copy assignment operator overload
-    ~Fixed();
+	public:
+		Fixed();
+		Fixed(const Fixed& other);//copy constructor
+		Fixed& operator=(const Fixed& other);//copy assignment operator overload
+		~Fixed();
 
-    int getRawBits(void) const;
-    void setRawBits(int const raw);
+		int getRawBits(void) const;
+		void setRawBits(int const raw);
 
 };
 
