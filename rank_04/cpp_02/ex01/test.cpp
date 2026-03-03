@@ -50,7 +50,7 @@ void test_negative() {
 }
 
 int main(void) {
-  std::cout << "=== Fixed ex00 tests ===" << std::endl;
+  std::cout << "=== Fixed ex01 tests ===" << std::endl;
 
   test_int_constructor();
   test_float_constructor();
