@@ -37,6 +37,17 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
+int Fixed::getRawBits(void) const
+{
+	std::cout << "getRawBits member function called" << std::endl;
+	return (_value);
+}
+
+void Fixed::setRawBits(int const raw)
+{
+	_value = raw;
+}
+
 float Fixed::toFloat(void) const
 {
 	return (float)_value  / (1 << _bits);

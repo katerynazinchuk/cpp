@@ -38,7 +38,7 @@ void test_float_constructor() {
   // перевіряємо що близько до 42.42 а не точно
   float diff = a.toFloat() - 42.42f;
   if (diff < 0) diff = -diff;  // абсолютне значення
-  check(diff < 0.01f, "Fixed(42.42f).toFloat() близько до 42.42f");
+  check(diff < 0.01f, "Fixed(42.42f).toFloat() close to 42.42f");
 }
 
 void test_negative() {

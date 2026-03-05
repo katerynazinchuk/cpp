@@ -7,7 +7,7 @@ class Fixed
 {
 	private:
 		int _value;
-		static const int _bits;//same across all fixed objects
+		static const int _bits = 8;//same across all fixed objects
 
 	public:
 		Fixed();
@@ -50,7 +50,6 @@ class Fixed
 		static const Fixed& min(const Fixed& a, const Fixed& b);
 		static Fixed& max(Fixed& a, Fixed& b);
 		static const Fixed& max(const Fixed& a, const Fixed& b);
-
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);

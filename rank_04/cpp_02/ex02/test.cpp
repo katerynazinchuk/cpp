@@ -67,7 +67,7 @@ void test_increment() {
   // post-increment
   Fixed post = a++;
   check(post.toFloat() == 5.00390625f,  "a++ returns old value");
-  check(a.toFloat() == 5.0078125f,      "a after a++ == 5 + 2*epsilon");
+  check(a.toFloat() == 5.0078125f,      "a after a++ == 5 + 2 * epsilon");
 
   // pre-decrement
   check((--a).toFloat() == 5.00390625f, "--a returns previous");
