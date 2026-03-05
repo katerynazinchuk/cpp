@@ -1,4 +1,6 @@
+#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
@@ -8,21 +10,19 @@ int main()
     ct.takeDamage(5);
     ct.beRepaired(3);
 
-    std::cout << "\n=== ScavTrap basic ===" << std::endl;
+    std::cout << "\n=== ScavTrap ===" << std::endl;
     ScavTrap st("Serena");
     st.attack("Alice");
     st.takeDamage(50);
     st.beRepaired(20);
     st.guardGate();
 
-    std::cout << "\n=== ScavTrap no EP ===" << std::endl;
-    for (int i = 0; i < 10; i++)
-        st.attack("Alice");
-    st.attack("Alice");     // не може — немає EP
-
-    std::cout << "\n=== Copy ===" << std::endl;
-    ScavTrap st2(st);
-    st2.attack("Alice");
+    std::cout << "\n=== FragTrap ===" << std::endl;
+    FragTrap ft("Rex");
+    ft.attack("Alice");
+    ft.takeDamage(30);
+    ft.beRepaired(10);
+    ft.highFivesGuys();
 
     std::cout << "\n=== Destruction order ===" << std::endl;
     return (0);
