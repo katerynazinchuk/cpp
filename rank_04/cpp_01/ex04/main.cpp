@@ -11,7 +11,7 @@ int main (int argc, char **argv)
         std::string s2 = argv[3];
 		if(s1.empty())
 		{
-			std::cout << "empty string" << std::endl;
+			std::cout << "first string is empty" << std::endl;
 			return (1);
 		}
 		std::ifstream in(filename);

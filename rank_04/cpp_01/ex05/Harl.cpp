@@ -29,8 +29,6 @@ void Harl::error(void)
 void Harl::complain(std::string level)
 {
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    //similar to c with void (*f)(void) = func_name, 
-    //which store the adress of func that we are looking for
     void (Harl::*funcs[4])(void) = 
     {
         &Harl::debug,
