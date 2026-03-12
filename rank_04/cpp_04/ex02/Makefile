@@ -1,7 +1,7 @@
 CXX := c++
 CXXFLAGS := -std=c++11 -Wall -Wextra -Werror
 
-NAME := animal
+NAME := brain
 TEST := test
 BUILD_DIR := build
 

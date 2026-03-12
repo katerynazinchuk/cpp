@@ -5,8 +5,7 @@
 #include <iostream>
 #include "colors.hpp"
 #include "AMateria.hpp"
-
-class ICharacter;
+#include "ICharacter.hpp"
 
 class Character: public ICharacter
 {
