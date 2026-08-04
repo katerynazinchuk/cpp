@@ -5,13 +5,15 @@
 #include <iostream>
 #include <exception>
 
+class Bureaucrat;
+
 class Form
 {
 private:
-    const std::string _name;
-    bool              _isSigned;
-    const int         _gradeToSign;
-    const int         _gradeToExec;
+    const std::string	_name;
+    bool				_isSigned;
+    const int			_gradeToSign;
+    const int			_gradeToExec;
 
 public:
     Form(const std::string& name, int gradeToSign, int gradeToExec);
