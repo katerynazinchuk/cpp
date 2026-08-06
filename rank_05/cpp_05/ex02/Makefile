@@ -6,7 +6,7 @@ NAME := bureaucrat
 TEST := test
 BUILD_DIR := build
 
-SRCS := main.cpp Bureaucrat.cpp Form.cpp
+SRCS := $(shell find . -iname "*.cpp")
 # TEST_SRCS := test.cpp Fixed.cpp
 
 OBJS := $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
