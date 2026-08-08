@@ -68,14 +68,30 @@ static bool isDouble(const std::string& str)
 	return (isDot && digits > 0);
 }
 
-
+static bool isFloat(const std::string & str)
+{
+	if(str.length() <= 1)
+		return false;
+	if(str[str.length() - 1] != 'f')
+		return false;
+	if(!isDouble(str.substr(0, str.length() - 1)))
+		return false;
+	return true;
+}
 void ScalarConverter::convert(const std::string & str)
 {
 	if(isPseudo(str))
 		std::cout << "detected: pseudo" << std::endl;
-	else  
-
-	std::cout << str << std::endl;
+	else if(isChar(str))
+		std::cout << "detected: char" << std::endl;
+	else if(isInt(str))
+		std::cout << "detected: int" << std::endl;
+	else if(isDouble(str))
+		std::cout << "detected: double" << std::endl;
+	else if(isFloat(str))
+		std::cout << "detected: float" << std::endl;
+else
+	std::cout << "detected: unknown" << std::endl;
 }
 
 
