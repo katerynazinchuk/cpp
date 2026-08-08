@@ -1,5 +1,9 @@
 #include "ScalarConverter.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <climits>
+#include <cctype>
 
 static bool isPseudo(const std::string& str)
 {
@@ -64,7 +68,6 @@ static bool isDouble(const std::string& str)
 			return false;
 		i++;
 	}
-	
 	return (isDot && digits > 0);
 }
 
@@ -78,20 +81,32 @@ static bool isFloat(const std::string & str)
 		return false;
 	return true;
 }
+
+static void printChar(double d)
+{
+	std::cout << "char: ";
+	if (std::isnan(d) || std::isinf(d) || d < 0 || d > 127)
+		std::cout << "impossible" << std::endl;
+	else if (!isprint(static_cast<int>(d)))
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
+}
+
 void ScalarConverter::convert(const std::string & str)
 {
 	if(isPseudo(str))
 		std::cout << "detected: pseudo" << std::endl;
 	else if(isChar(str))
-		std::cout << "detected: char" << std::endl;
+		printChar(str[1]);
 	else if(isInt(str))
 		std::cout << "detected: int" << std::endl;
-	else if(isDouble(str))
-		std::cout << "detected: double" << std::endl;
 	else if(isFloat(str))
 		std::cout << "detected: float" << std::endl;
-else
-	std::cout << "detected: unknown" << std::endl;
+	else if(isDouble(str))
+		std::cout << "detected: double" << std::endl;
+	else
+		std::cout << "detected: unknown" << std::endl;
 }
 
 
