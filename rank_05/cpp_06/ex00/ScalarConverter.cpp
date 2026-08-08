@@ -93,20 +93,74 @@ static void printChar(double d)
 		std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
 }
 
-void ScalarConverter::convert(const std::string & str)
+static void printInt(double d)
 {
-	if(isPseudo(str))
-		std::cout << "detected: pseudo" << std::endl;
-	else if(isChar(str))
-		printChar(str[1]);
-	else if(isInt(str))
-		std::cout << "detected: int" << std::endl;
-	else if(isFloat(str))
-		std::cout << "detected: float" << std::endl;
-	else if(isDouble(str))
-		std::cout << "detected: double" << std::endl;
+	std::cout << "int: ";
+	if (std::isnan(d) || std::isinf(d) || d < INT_MIN || d > INT_MAX)
+		std::cout << "impossible" << std::endl;
 	else
-		std::cout << "detected: unknown" << std::endl;
+		std::cout << static_cast<int>(d) << std::endl;
 }
 
+static void printFloat(double d)
+{
+	float f = static_cast<float>(d);
+	std::cout << "float: " << f;
+	if (!std::isnan(f) && !std::isinf(f) && f == static_cast<long>(f))
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+}
 
+static void printDouble(double d)
+{
+	std::cout << "double: " << d;
+	if (!std::isnan(d) && !std::isinf(d) && d == static_cast<long>(d))
+		std::cout << ".0";
+	std::cout << std::endl;
+}
+
+void ScalarConverter::convert(const std::string& str)
+{
+	bool pseudo = isPseudo(str);
+	bool pseudoF = pseudo && str[str.length() - 1] == 'f';
+
+	if (isChar(str))
+	{
+		char c = str[1];
+		printChar(c);
+		printInt(c);
+		printFloat(c);
+		printDouble(c);
+	}
+	else if (isInt(str))
+	{
+		long l = strtol(str.c_str(), NULL, 10);
+		printChar(l);
+		printInt(l);
+		printFloat(l);
+		printDouble(l);
+	}
+	else if (isFloat(str) || pseudoF)
+	{
+		float f = strtof(str.c_str(), NULL);
+		printChar(f);
+		printInt(f);
+		printFloat(f);
+		printDouble(f);
+	}
+	else if (isDouble(str) || pseudo)
+	{
+		double d = strtod(str.c_str(), NULL);
+		printChar(d);
+		printInt(d);
+		printFloat(d);
+		printDouble(d);
+	}
+	else
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+	}
+}
