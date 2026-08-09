@@ -6,6 +6,8 @@ int main()
 	srand(time(NULL));
 
 	Base* p = generate();
-	(void)p;
+	identify(p);
+	identify(*p);
+	delete p;
 	return 0;
 }

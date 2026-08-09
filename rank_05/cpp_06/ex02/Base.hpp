@@ -2,11 +2,13 @@
 #define BASE_HPP
 
 #include <cstdlib>
+#include <string>
+#include <iostream>
 
 class Base
 {
 	public:
-		virtual ~Base() {}
+		virtual ~Base();
 };
 
 class A : public Base {};
