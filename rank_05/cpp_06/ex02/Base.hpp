@@ -2,7 +2,6 @@
 #define BASE_HPP
 
 #include <cstdlib>
-#include <string>
 #include <iostream>
 
 class Base
