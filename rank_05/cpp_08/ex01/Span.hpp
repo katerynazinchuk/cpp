@@ -4,7 +4,7 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
-#include <climits>
+#include <iterator>
 //std::runtime_error
 
 class Span
@@ -23,6 +23,13 @@ class Span
 		void	addNumber(int number);
 		long		shortestSpan() const;
 		long		longestSpan() const;
+		template<typename It>
+		void addRange(It first, It last)
+		{
+			if(_numbers.size() + std::distance(first, last) > _N)
+				throw std::runtime_error("out of size");
+			_numbers.insert(_numbers.end(), first, last);
+		}
 };
 
 #endif

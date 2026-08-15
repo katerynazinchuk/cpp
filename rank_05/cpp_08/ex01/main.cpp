@@ -1,5 +1,7 @@
 #include "Span.hpp"
 #include <iostream>
+#include <list>
+#include <climits>
 
 
 int main()
@@ -152,6 +154,53 @@ int main()
 	{
 		std::cout << "[9] unexpected exception: " << e.what() << std::endl;
 	}
+
+	std::cout << "=== addRange to vector===" << std::endl;
+	std::vector<int> source;
+	for(int i = 0; i < 10000; i++)
+		source.push_back(i*10);
+	try
+	{
+		Span sp_range = Span(10000);
+		sp_range.addRange(source.begin(), source.end());
+
+		std::cout << "[10a] shortest: " << sp_range.shortestSpan() << " (expected 10)" << std::endl;
+		std::cout << "[10a] longest:  " << sp_range.longestSpan() << " (expected 99990)" << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "[10a] unexpected exception: " << e.what() << std::endl;
+	}
 	
+	Span sp_small = Span(3);
+	std::vector<int> big_source;
+	for (int i = 0; i < 10; ++i)
+		big_source.push_back(i);
+	try
+	{
+		sp_small.addRange(big_source.begin(), big_source.end());
+		std::cout << "[10b] ERROR: no exception thrown" << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "[10b] exception: " << e.what() << std::endl;
+	}
+
+	std::cout << "=== addRange to list===" << std::endl;
+	std::list<int> l_source;
+	for(int i = 0; i < 10000; i++)
+		l_source.push_back(i+10);
+	try
+	{
+		Span sp_range = Span(10000);
+		sp_range.addRange(l_source.begin(), l_source.end());
+
+		std::cout << "[11] shortest: " << sp_range.shortestSpan() << " (expected 1)" << std::endl;
+		std::cout << "[11] longest:  " << sp_range.longestSpan() << " (expected 9999)" << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "[11] unexpected exception: " << e.what() << std::endl;
+	}
 	return 0;
 }
