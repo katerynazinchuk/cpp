@@ -4,6 +4,7 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include <climits>
 //std::runtime_error
 
 class Span
@@ -20,8 +21,8 @@ class Span
 		~Span();
 
 		void	addNumber(int number);
-		int		shortestSpan() const;
-		int		longestSpan() const;
+		long		shortestSpan() const;
+		long		longestSpan() const;
 };
 
 #endif
