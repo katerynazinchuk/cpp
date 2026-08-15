@@ -1,15 +1,15 @@
 #include "Span.hpp"
 
-Span::Span() : _n(0)
+Span::Span() : _N(0)
 {
 }
 
-Span::Span(unsigned int n) : _n(n)
+Span::Span(unsigned int N) : _N(N)
 {
-	_numbers.reserve(n);
+	_numbers.reserve(N);
 }
 
-Span::Span(const Span& other) : _n(other._n), _numbers(other._numbers)
+Span::Span(const Span& other) : _N(other._N), _numbers(other._numbers)
 {
 }
 
@@ -17,7 +17,7 @@ Span& Span::operator=(const Span& other)
 {
 	if (this != &other)
 	{
-		_n = other._n;
+		_N = other._N;
 		_numbers = other._numbers;
 	}
 	return *this;
@@ -25,4 +25,20 @@ Span& Span::operator=(const Span& other)
 
 Span::~Span()
 {
+}
+
+void Span::addNumber(int number)
+{
+	if(_numbers.size() >= _N)
+		throw std::runtime_error("Span is full");
+	_numbers.push_back(number);
+}
+
+int Span::longestSpan() const
+{
+}
+
+int Span::shortestSpan() const
+{
+
 }

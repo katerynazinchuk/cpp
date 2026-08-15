@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <stdexcept>
+#include <algorithm>
 //std::runtime_error
 
 class Span
