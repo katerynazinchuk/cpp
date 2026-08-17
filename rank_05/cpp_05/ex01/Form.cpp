@@ -1,4 +1,4 @@
-b#include "Form.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 Form::Form(const std::string& name, int gradeToSign, int gradeToExec)
