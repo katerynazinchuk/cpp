@@ -1,11 +1,12 @@
 #include "MutantStack.hpp"
+#include "colors.hpp"
 #include <iostream>
 #include <list>
 #include <string>
 
 int main()
 {
-	std::cout << "=== subject example ===" << std::endl;
+	std::cout << YELLOW << "=== subject example ===" << RESET << std::endl;
 	MutantStack<int> mstack;
 
 	mstack.push(5);
@@ -13,7 +14,7 @@ int main()
 	std::cout << mstack.top() << std::endl;
 
 	mstack.pop();
-	std::cout << mstack.size() << std::endl;
+	std::cout << "size: " << mstack.size() << std::endl;
 
 	mstack.push(3);
 	mstack.push(5);
@@ -32,13 +33,13 @@ int main()
 	}
 	std::stack<int> s(mstack);
 
-	std::cout << "=== test with std::list ===" << std::endl;
+	std::cout << YELLOW << "=== test with std::list ===" << RESET << std::endl;
 	std::list<int> lst;
 	lst.push_back(5);
 	lst.push_back(17);
 	std::cout << lst.back() << std::endl;
 	lst.pop_back();
-	std::cout << lst.size() << std::endl;
+	std::cout << "size: " << lst.size() << std::endl;
 
 	lst.push_back(3);
 	lst.push_back(5);
@@ -53,13 +54,13 @@ int main()
 		std::cout << *lit << std::endl;
 		++lit;
 	}
-	std::cout << "=== empty stack ===" << std::endl;
+	std::cout << YELLOW << "=== empty stack ===" << RESET << std::endl;
 	MutantStack<int> empty;
-	std::cout << empty.size() << std::endl;
+	std::cout << "size: " << empty.size() << std::endl;
 	if (empty.begin() == empty.end())
 		std::cout << "begin == end, nothing to iterate" << std::endl;
 
-	std::cout << "=== copy constructor ===" << std::endl;
+	std::cout << YELLOW << "=== copy constructor ===" << RESET << std::endl;
 	MutantStack<int> copy(mstack);
 	MutantStack<int>::iterator itt = copy.begin();
 	MutantStack<int>::iterator itte = copy.end();
@@ -69,14 +70,8 @@ int main()
 		++itt;
 	}
 	copy.push(999);
-	std::cout << mstack.size() << std::endl;
-	std::cout << copy.size() << std::endl;
-
-	std::cout << "=== assignment operator ===" << std::endl;
-
-
-	std::cout << "=== another type: std::string ===" << std::endl;
-
-
+	std::cout << "last added: " << copy.top() << std::endl;
+	std::cout << "size: " << mstack.size() << std::endl;
+	std::cout << "size: " << copy.size() << std::endl;
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include "colors.hpp"
 #include <iostream>
 #include <list>
 #include <climits>
@@ -6,7 +7,7 @@
 
 int main()
 {
-	std::cout << "=== subject example ===" << std::endl;
+	std::cout << MAGENTA << "=== subject example ===" << RESET << std::endl;
 	try
 	{
 		Span sp = Span(5);
@@ -23,7 +24,7 @@ int main()
 		std::cout << "[1] unexpected exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== span is full ===" << std::endl;
+	std::cout << MAGENTA << "=== span is full ===" << RESET << std::endl;
 	Span sp_F = Span(3);
 	sp_F.addNumber(6);
 	sp_F.addNumber(3);
@@ -38,7 +39,7 @@ int main()
 		std::cout << "[2] exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== not enough numbers ===" << std::endl;
+	std::cout << MAGENTA << "=== not enough numbers ===" << RESET << std::endl;
 	Span sp_E = Span(5);
 	try
 	{
@@ -79,7 +80,7 @@ int main()
 		std::cout << "[3d] one number, longest: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== exactly two numbers ===" << std::endl;
+	std::cout << MAGENTA << "=== exactly two numbers ===" << RESET << std::endl;
 	try
 	{
 		Span sp_two = Span(2);
@@ -94,7 +95,7 @@ int main()
 		std::cout << "[4] unexpected exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== duplicates ===" << std::endl;
+	std::cout << MAGENTA << "=== duplicates ===" << RESET << std::endl;
 	try
 	{
 		Span sp_two = Span(4);
@@ -110,7 +111,7 @@ int main()
 	{
 		std::cout << "[5] unexpected exception: " << e.what() << std::endl;
 	}
-	std::cout << "=== negative numbers ===" << std::endl;
+	std::cout << MAGENTA << "=== negative numbers ===" << RESET << std::endl;
 	try
 	{
 		Span sp_three = Span(3);
@@ -125,7 +126,7 @@ int main()
 	{
 		std::cout << "[6] unexpected exception: " << e.what() << std::endl;
 	}
-	std::cout << "=== extreme values (the overflow case) ===" << std::endl;
+	std::cout << MAGENTA << "=== extreme values ===" << RESET << std::endl;
 	try
 	{
 		Span sp_ext = Span(2);
@@ -140,7 +141,7 @@ int main()
 		std::cout << "[7] unexpected exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== 10 000 random numbers ===" << std::endl;
+	std::cout << MAGENTA << "=== 10 000 random numbers ===" << RESET << std::endl;
 	try
 	{
 		Span sp_known = Span(10000);
@@ -155,7 +156,7 @@ int main()
 		std::cout << "[9] unexpected exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== addRange to vector===" << std::endl;
+	std::cout << MAGENTA << "=== addRange to vector===" << RESET << std::endl;
 	std::vector<int> source;
 	for(int i = 0; i < 10000; i++)
 		source.push_back(i*10);
@@ -186,7 +187,7 @@ int main()
 		std::cout << "[10b] exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== addRange to list===" << std::endl;
+	std::cout << MAGENTA << "=== addRange to list===" << RESET << std::endl;
 	std::list<int> l_source;
 	for(int i = 0; i < 10000; i++)
 		l_source.push_back(i+10);

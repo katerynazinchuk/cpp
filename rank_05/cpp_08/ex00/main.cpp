@@ -1,11 +1,12 @@
 #include "easyfind.hpp"
+#include "colors.hpp"
 #include <vector>
 #include <list>
 #include <iostream>
 
 int main()
 {
-	std::cout << "=== container type: std::vector ===" << std::endl;
+	std::cout << GREEN << "=== container type: std::vector ===" << RESET << std::endl;
 	std::vector<int> v = {10, 20, 30};
 	try
 	{
@@ -17,7 +18,7 @@ int main()
 		std::cerr << "exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== iterator points into the container, not a copy ===" << std::endl;
+	std::cout << GREEN << "=== iterator points into the container, not a copy ===" << RESET << std::endl;
 	try
 	{
 		auto it = easyfind(v, 20);
@@ -26,10 +27,10 @@ int main()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "exception: " << e.what() << std::endl;
+		std::cerr << "[2] exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== container type: std::list ===" << std::endl;
+	std::cout << GREEN << "=== container type: std::list ===" << RESET << std::endl;
 	std::list<int> l = {100, 200};
 	try
 	{
@@ -38,10 +39,10 @@ int main()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "exception: " << e.what() << std::endl;
+		std::cerr << "[3] exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== absent value in vector ===" << std::endl;
+	std::cout << GREEN << "=== absent value in vector ===" << RESET << std::endl;
 	try
 	{
 		easyfind(v, 300);
@@ -49,10 +50,10 @@ int main()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "exception: " << e.what() << std::endl;
+		std::cerr << "[4] exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== empty container ===" << std::endl;
+	std::cout << GREEN << "=== empty container ===" << RESET << std::endl;
 	std::vector<int> empty = {};
 	try
 	{
@@ -61,10 +62,10 @@ int main()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "exception: " << e.what() << std::endl;
+		std::cerr << "[5] exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "=== duplicates ===" << std::endl;
+	std::cout << GREEN << "=== duplicates ===" << RESET << std::endl;
 	std::vector<int> d = {5, 7, 5, 8};
 	try
 	{
@@ -79,7 +80,7 @@ int main()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "exception: " << e.what() << std::endl;
+		std::cerr << "[6] exception: " << e.what() << std::endl;
 	}
 	return 0;
 }
