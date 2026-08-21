@@ -1,7 +1,7 @@
 CXX := c++
 CXXFLAGS := -std=c++11 -Wall -Wextra -Werror
 
-NAME := bitcoin_exchange
+NAME := btc
 TEST := test
 BUILD_DIR := build
 
