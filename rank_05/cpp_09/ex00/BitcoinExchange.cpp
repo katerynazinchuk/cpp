@@ -10,7 +10,7 @@ void BitcoinExchange::loadDatabase(const std::string& filename)
     std::string line;
 	std::ifstream file(filename);
 	if (!file.is_open()) 
-		throw std::runtime_error("cant open a file");
+		throw std::runtime_error("Error: could not open file");
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
