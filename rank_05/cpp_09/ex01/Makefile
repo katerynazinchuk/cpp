@@ -1,7 +1,7 @@
 CXX := c++
 CXXFLAGS := -std=c++11 -Wall -Wextra -Werror
 
-NAME := reverse
+NAME := RPN
 TEST := test
 BUILD_DIR := build
 
