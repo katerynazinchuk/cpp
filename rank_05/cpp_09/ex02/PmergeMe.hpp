@@ -6,11 +6,7 @@
 class PmergeMe
 {
 	private:
-		struct Pair
-		{
-			int big;
-			int small;
-		}; 
+		void sortBlocks(std::vector<int>& v, size_t block);
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe& other);

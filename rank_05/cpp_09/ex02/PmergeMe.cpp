@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <algorithm>
 
 PmergeMe::PmergeMe(){}
 PmergeMe::PmergeMe(const PmergeMe& other)
@@ -12,37 +13,47 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 }
 PmergeMe::~PmergeMe() {}
 
+void PmergeMe::sortBlocks(std::vector<int>& v, size_t block)
+{
+	size_t num_blocks = v.size() / block;
+	if(num_blocks < 2)
+		return;
+	
+	for (size_t i = 0; i + 1 < num_blocks; i += 2)
+	{
+		size_t endA = i * block + block - 1;
+		size_t endB = (i + 1) * block + block - 1;
+		if(v[endA] > v[endB])
+			std::swap_ranges(v.begin() + i * block, v.begin() + i * block + block, v.begin() + (i + 1) * block);
+	}
+	std::cout << "level " << block << ", blocks " << num_blocks << std::endl;
+
+	sortBlocks(v, block * 2);
+	
+	std::vector<int> main;
+	std::vector<int> pend;
+	for (size_t j = 0; j < block; ++j)
+		main.push_back(v[j]);
+	for (size_t i = 1; i < num_blocks; ++i)
+	{
+		for (size_t j = 0; j < block; ++j)
+		{
+			if (i % 2 == 1)
+				main.push_back(v[i * block + j]);
+			else
+				pend.push_back(v[i * block + j]);
+		}
+	}
+	std::cout << "main: ";
+	for (size_t i = 0; i < main.size(); ++i)
+		std::cout << main[i] << " ";
+	std::cout << " | pend: ";
+	for (size_t i = 0; i < pend.size(); ++i)
+		std::cout << pend[i] << " ";
+	std::cout << std::endl;
+}
+
 void PmergeMe::sortVector(std::vector<int>& v)
 {
-	std::vector<Pair> pairs;
-
-	for(size_t i = 0; i + 1 < v.size(); i += 2)
-	{
-		int a = v[i];
-		int b = v[i + 1];
-		Pair p;
-		if(a > b)
-		{
-			p.big = a;
-			p.small = b;
-		}
-		else
-		{
-			p.big = b;
-			p.small = a;
-		}
-		pairs.push_back(p);
-	}
-
-	bool hasOdd = (v.size() % 2 != 0);
-	int odd = 0;
-	if (hasOdd)
-		odd = v.back();
-	for(size_t i = 0; i < pairs.size() ; ++i)
-	{
-		std::cout << "[" << pairs[i].big << ", " << pairs[i].small << "] ";
-	}
-	if (hasOdd)
-    		std::cout << "odd: " << odd;
-	std::cout << std::endl;
+	sortBlocks(v, 1);
 }
