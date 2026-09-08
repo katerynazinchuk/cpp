@@ -13,7 +13,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 }
 PmergeMe::~PmergeMe() {}
 
-void PmergeMe::sortBlocks(std::vector<int>& v, size_t block)
+void PmergeMe::sortBlocks_v(std::vector<int>& v, size_t block)
 {
 	size_t num_blocks = v.size() / block;
 	if(num_blocks < 2)
@@ -27,7 +27,7 @@ void PmergeMe::sortBlocks(std::vector<int>& v, size_t block)
 			std::swap_ranges(v.begin() + i * block, v.begin() + i * block + block, v.begin() + (i + 1) * block);
 	}
 
-	sortBlocks(v, block * 2);
+	sortBlocks_v(v, block * 2);
 
 	std::vector<int> main;
 	std::vector<int> pend;
@@ -72,7 +72,7 @@ void PmergeMe::sortBlocks(std::vector<int>& v, size_t block)
 	{
 		size_t k = jacobstalOrder[n];
 		int value = pend[k * block + block - 1];
-		size_t pos = findPosition(main, value, aPosition[k], block);
+		size_t pos = findPosition_v(main, value, aPosition[k], block);
 		
 		size_t insertAt   = pos * block;
 		size_t pendStart  = k * block;
@@ -89,7 +89,7 @@ void PmergeMe::sortBlocks(std::vector<int>& v, size_t block)
 		v[i] = main[i];
 }
 
-size_t PmergeMe::findPosition(const std::vector<int>& chain, int value, size_t limit, size_t block)
+size_t PmergeMe::findPosition_v(const std::vector<int>& chain, int value, size_t limit, size_t block)
 {
 	size_t left = 0;
 	size_t right = limit;
@@ -109,10 +109,10 @@ size_t PmergeMe::findPosition(const std::vector<int>& chain, int value, size_t l
 
 void PmergeMe::sortVector(std::vector<int>& v)
 {
-	sortBlocks(v, 1);
+	sortBlocks_v(v, 1);
 }
 
-void PmergeMe::sortBlocks(std::deque<int>& d, size_t block)
+void PmergeMe::sortBlocks_d(std::deque<int>& d, size_t block)
 {
 	size_t num_blocks = d.size() / block;
 	if(num_blocks < 2)
@@ -126,7 +126,7 @@ void PmergeMe::sortBlocks(std::deque<int>& d, size_t block)
 			std::swap_ranges(d.begin() + i * block, d.begin() + i * block + block, d.begin() + (i + 1) * block);
 	}
 	
-	sortBlocks(d, block * 2);
+	sortBlocks_d(d, block * 2);
 
 	std::deque<int> main;
 	std::deque<int> pend;
@@ -143,9 +143,9 @@ void PmergeMe::sortBlocks(std::deque<int>& d, size_t block)
 		}
 	}
 
-	//Jacobstal + insertion 2ᵏ − 1
+	//Jacobsthal + insertion 2ᵏ − 1
 	//binary search for a place with left limit. b < a
-	//after inserrt a position mooved tto the right
+	//after insert a position moved to the right
 
 	std::deque<size_t> aPosition;
 	for (size_t i = 0; i < pend.size() / block; ++i)
@@ -171,7 +171,7 @@ void PmergeMe::sortBlocks(std::deque<int>& d, size_t block)
 	{
 		size_t k = jacobstalOrder[n];
 		int value = pend[k * block + block - 1];
-		size_t pos = findPosition(main, value, aPosition[k], block);
+		size_t pos = findPosition_d(main, value, aPosition[k], block);
 		
 		size_t insertAt   = pos * block;
 		size_t pendStart  = k * block;
@@ -188,7 +188,7 @@ void PmergeMe::sortBlocks(std::deque<int>& d, size_t block)
 		d[i] = main[i];
 }
 
-size_t PmergeMe::findPosition(const std::vector<int>& chain, int value, size_t limit, size_t block)
+size_t PmergeMe::findPosition_d(const std::deque<int>& chain, int value, size_t limit, size_t block)
 {
 	size_t left = 0;
 	size_t right = limit;
@@ -208,5 +208,5 @@ size_t PmergeMe::findPosition(const std::vector<int>& chain, int value, size_t l
 
 void PmergeMe::sortDeque(std::deque<int>& d)
 {
-	sortBlocks(d, 1);
+	sortBlocks_d(d, 1);
 }
