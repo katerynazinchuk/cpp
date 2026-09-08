@@ -8,6 +8,9 @@ class PmergeMe
 	private:
 		void sortBlocks(std::vector<int>& v, size_t block);
 		size_t findPosition(const std::vector<int>& chain, int value, size_t limit, size_t block);
+
+		void sortBlocks(std::deque<int>& v, size_t block);
+		size_t findPosition(const std::deque<int>& chain, int value, size_t limit, size_t block);
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe& other);
@@ -15,4 +18,5 @@ class PmergeMe
 		~PmergeMe();
 
 		void sortVector(std::vector<int>& v);
+		void sortDeque(std::deque<int>& v);
 };
