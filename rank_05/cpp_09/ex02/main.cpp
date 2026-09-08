@@ -42,9 +42,6 @@ int main (int argc, char** argv)
 	std::cout << std::endl;
 	PmergeMe sorted;
 	sorted.sortVector(input);
-	// std::cout << "Pairs: ";
-	// for(size_t i = 0; i < input.size(); ++i)
-	// 	std::cout << input[i] << " ";
-	// std::cout << std::endl;
+	
 	return 0;
 }
